@@ -1,0 +1,19 @@
+.contact-card {
+    width: 250px;
+    margin-bottom: 20px;
+    transition: all .7s ease-in-out;
+
+    .mat-icon {
+        height: 60px;
+        width: 60px;
+        font-size: 60px;
+    }
+
+    .not-ready {
+        color: #b71c1c;
+    }
+
+    .ready {
+        color: #00c853;
+    }
+}

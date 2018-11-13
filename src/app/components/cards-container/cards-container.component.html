@@ -1,0 +1,6 @@
+<div class="cards-container" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="space-around">
+
+    <ng-container *ngFor="let participant of $participants | async; trackBy: trackByFn">
+        <app-card [participant]="participant"></app-card>
+    </ng-container>
+</div>
