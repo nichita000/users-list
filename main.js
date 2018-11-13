@@ -791,7 +791,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WEBSOCKET_CONNECT_URL", function() { return WEBSOCKET_CONNECT_URL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BASE_HREF", function() { return BASE_HREF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PARTICIPANTS_EVENT_ROUTE", function() { return PARTICIPANTS_EVENT_ROUTE; });
-var WEBSOCKET_CONNECT_URL = 'ws://89.223.27.70/ws';
+var WEBSOCKET_CONNECT_URL = 'wss://89.223.27.70/ws';
 var BASE_HREF = 'http://89.223.27.70';
 var PARTICIPANTS_EVENT_ROUTE = '/topic/messages';
 
