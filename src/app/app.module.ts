@@ -13,10 +13,6 @@ import { StompService, StompConfig } from '@stomp/ng2-stompjs';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from './store/store.module';
 
-// import {
-//   CardsContainerComponent,
-//   CardComponent,
-// } from './components';
 import { CardsContainerComponent } from './components/cards-container/cards-container.component';
 import { CardComponent } from './components/card/card.component';
 

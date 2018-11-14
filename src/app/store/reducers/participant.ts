@@ -1,5 +1,15 @@
 import { Participant } from '../models/participant';
-import * as participantActions from '../actions/participant';
+import {
+    Action,
+    PARTICIPANTS_SOCKET_RECIVED,
+    PARTICIPANTS_SOCKET_SUBSCRIBE,
+    LOAD_PARTICIPANTS,
+    LOAD_PARTICIPANTS_ERROR,
+    LOAD_PARTICIPANTS_SUCCESS,
+    PARTICIPANT_ADDED,
+    PARTICIPANT_READY_STATUS_CHANGED,
+    PARTICIPANT_REMOVED
+} from '../actions/participant';
 
 import { isEmpty } from 'lodash';
 
@@ -15,13 +25,13 @@ const initialState: State = {
     loadInProgress: false, socketSubscribed: false
 };
 
-export function reducer(state = initialState, action: participantActions.Action): State {
+export function reducer(state = initialState, action: Action): State {
     switch (action.type) {
-        case participantActions.PARTICIPANTS_SOCKET_SUBSCRIBE:
+        case PARTICIPANTS_SOCKET_SUBSCRIBE:
             return { ...state, socketSubscribed: true };
-        case participantActions.LOAD_PARTICIPANTS:
+        case LOAD_PARTICIPANTS:
             return { ...state, loadInProgress: true };
-        case participantActions.LOAD_PARTICIPANTS_SUCCESS:
+        case LOAD_PARTICIPANTS_SUCCESS:
             const participantsLoaded = action.payload;
 
             if (isEmpty(state.ids) && !isEmpty(participantsLoaded)) {
@@ -49,7 +59,7 @@ export function reducer(state = initialState, action: participantActions.Action)
             } else {
                 return { ...state, loadInProgress: false };
             }
-        case participantActions.PARTICIPANT_ADDED:
+        case PARTICIPANT_ADDED:
             const newParticipant = action.payload as Participant;
             const newParticipantId = newParticipant.id;
 
@@ -58,7 +68,7 @@ export function reducer(state = initialState, action: participantActions.Action)
                 participants: [ ...state.participants, newParticipant ],
                 ids: [ ...state.ids, newParticipantId ]
             };
-        case participantActions.PARTICIPANT_REMOVED:
+        case PARTICIPANT_REMOVED:
             const participantIdToRemove = action.payload;
 
             const filteredParticipants: Array<Participant> = state.participants.filter(
@@ -67,7 +77,7 @@ export function reducer(state = initialState, action: participantActions.Action)
             const ids: Array<string> = filteredParticipants.map((participant: Participant) => participant.id);
 
             return { ...state, participants: filteredParticipants, ids };
-        case participantActions.PARTICIPANT_READY_STATUS_CHANGED:
+        case PARTICIPANT_READY_STATUS_CHANGED:
             const { participantId, newReadyStatus: newStatus } = action.payload;
 
             const updatedParticipants: Array<Participant> = state.participants.map(

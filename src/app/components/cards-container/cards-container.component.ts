@@ -4,8 +4,11 @@ import { Store } from '@ngrx/store';
 import { Participant } from '../../store/models/participant';
 import { Observable } from 'rxjs';
 
-import * as fromRoot from '../../store/reducers/index';
-import * as fromActions from '../../store/actions/participant';
+import {
+  State as RootState,
+  getParticipants
+} from '../../store/reducers/index';
+import { LoadParticipants, ParticipantsSockerSubscribe } from '../../store/actions/participant';
 
 @Component({
     selector: 'app-cards-container',
@@ -17,14 +20,14 @@ export class CardsContainerComponent implements OnInit {
   $participants: Observable<Array<Participant>>;
 
   constructor(
-      private _store: Store<fromRoot.State>,
+      private _store: Store<RootState>,
   ) {}
 
   ngOnInit(): void {
-    this._store.dispatch(new fromActions.LoadParticipants());
-    this._store.dispatch(new fromActions.ParticipantsSockerSubscribe());
+    this._store.dispatch(new LoadParticipants());
+    this._store.dispatch(new ParticipantsSockerSubscribe());
 
-    this.$participants = this._store.select(fromRoot.getParticipants);
+    this.$participants = this._store.select(getParticipants);
   }
 
   trackByFn = (participant: Participant) => participant.id;
