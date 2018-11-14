@@ -1,21 +1,20 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
-
-import { State as ParticipantState, getIds, getParticipants as selectParticipants, reducer } from './participant';
+import * as fromParticipant from './participant';
 
 export interface State {
-    participants: ParticipantState;
+    participants: fromParticipant.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-    participants: reducer
+    participants: fromParticipant.reducer
 };
 
-export const getParticipantsState = createFeatureSelector<ParticipantState>('participants');
+export const getParticipantsState = createFeatureSelector<fromParticipant.State>('participants');
 export const getParticipants = createSelector(
     getParticipantsState,
-    selectParticipants
+    fromParticipant.getParticipants
 );
 export const getParticipantIds = createSelector(
     getParticipantsState,
-    getIds
+    fromParticipant.getIds
 );
