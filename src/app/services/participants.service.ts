@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Participant } from '../store/models/participant';
 
-import { BASE_HREF } from '../../assets/config';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ParticipantsService {
@@ -12,7 +12,7 @@ export class ParticipantsService {
     constructor(private _http: HttpClient) {}
 
     participantsList(): Observable<Array<Participant>> {
-        const url = `${BASE_HREF}/participants`;
+        const url = `${environment.baseHref}/participants`;
 
         return this._http.get<Array<Participant>>(url);
     }

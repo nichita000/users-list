@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Participant } from '../../store/models/participant';
 import { Observable } from 'rxjs';
 
-import * as fromRoot from '../../store/reducers';
+import * as fromRoot from '../../store/reducers/index';
 import * as fromActions from '../../store/actions/participant';
 
 @Component({

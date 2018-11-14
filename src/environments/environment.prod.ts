@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  websocketConnectUrl: 'wss://jobtask.igrator.org/ws',
+  baseHref: 'https://jobtask.igrator.org'
 };

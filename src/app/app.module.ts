@@ -5,22 +5,23 @@ import { MatCardModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 
-import { WEBSOCKET_CONNECT_URL } from '../assets/config';
+import { environment } from '../environments/environment';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { StompService, StompConfig } from '@stomp/ng2-stompjs';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from './store/store.module';
 
-import {
-  CardsContainerComponent,
-  CardComponent,
-} from './components';
+// import {
+//   CardsContainerComponent,
+//   CardComponent,
+// } from './components';
+import { CardsContainerComponent } from './components/cards-container/cards-container.component';
+import { CardComponent } from './components/card/card.component';
 
 const stompConfig: StompConfig = {
-  url: WEBSOCKET_CONNECT_URL,
+  url: environment.websocketConnectUrl,
   headers: {},
   heartbeat_in: 0,
   heartbeat_out: 0,
@@ -37,7 +38,6 @@ const stompConfig: StompConfig = {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     HttpClientModule,
     StoreModule,
     StoreDevtoolsModule.instrument({ maxAge: 21 }),
