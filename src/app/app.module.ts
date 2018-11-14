@@ -10,7 +10,6 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
 import { StompService, StompConfig } from '@stomp/ng2-stompjs';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from './store/store.module';
 
 import { CardsContainerComponent } from './components/cards-container/cards-container.component';
@@ -36,7 +35,6 @@ const stompConfig: StompConfig = {
     BrowserAnimationsModule,
     HttpClientModule,
     StoreModule,
-    StoreDevtoolsModule.instrument({ maxAge: 21 }),
     FlexLayoutModule,
 
     MatIconModule,
